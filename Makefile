@@ -2,7 +2,7 @@ CFLAGS=-c -Wall
 LDFLAGS=-L. -ldl
 SOURCES=main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=OpenNet
+EXECUTABLE=app
 G++=g++
 all: $(SOURCES) $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
