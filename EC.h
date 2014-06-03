@@ -30,6 +30,24 @@ public:
 	String(const std::string& other) {
 		sval = other;
 	}
+	String operator+(const String& other) {
+	  return String(sval+other.sval);
+	}
+	String& operator+=(const String& other) {
+	  sval+=other.sval;
+	  return *this;
+	}
+	String& operator<<(const String& other){
+	  sval+=other.sval;
+	  return *this;
+	}
+	template<typename T>
+	void operator>>(T& val) {
+	  //Top secret service
+	  std::stringstream tss;
+	  tss<<sval;
+	  tss>>val;
+	}
 	template<typename T>
 	String(const T& other) {
 		//Secret service

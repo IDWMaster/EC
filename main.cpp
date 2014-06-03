@@ -5,8 +5,14 @@ using namespace EC;
 
 
 int main(int argc, char** argv){
-	String strong = "hello world";
-	strong[0] = 2;
-	WriteLine(strong);
+	 String s;
+	 s<<"Hello"<<" "<<"world"<<"!";
+	 WriteLine(s);
+	 
+	 
+	 String mint = "5";
+	 int val;
+	 mint>>val;
+	 WriteLine(val);
 	return 0;
 }
