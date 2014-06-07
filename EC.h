@@ -13,7 +13,7 @@ class ReadOnlyProperty {
 public:
 	std::function<T()> get;
 	operator T() {
-
+return get();
 	}
 };
 class String {
