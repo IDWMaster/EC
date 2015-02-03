@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <functional>
+#define var auto
 namespace EC {
 template<typename T>
 class ReadOnlyProperty {
@@ -53,7 +54,7 @@ public:
 		//Secret service
 		std::stringstream ss;
 		ss<<other;
-		sval = other;
+		sval = ss.str();
 	}
 	const char& operator[](size_t idx) const {
 		return sval[idx];

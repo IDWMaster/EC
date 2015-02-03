@@ -1,18 +1,14 @@
 #include "EC.h"
-//Linux sample application.
 using namespace EC;
 
-
-
 int main(int argc, char** argv){
-	 String s;
-	 s<<"Hello"<<" "<<"world"<<"!";
-	 WriteLine(s);
-	 
-	 
-	 String mint = "5";
-	 int val;
-	 mint>>val;
-	 WriteLine(val);
-	return 0;
+	WriteLine("Pick a number for a: ");
+	int a = ReadLine();
+	WriteLine("Pick a number for B: ");
+	int b = ReadLine();
+	int sum = a+b;
+
+WriteLine(sum);
+
+return 0;
 }
