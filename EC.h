@@ -85,6 +85,18 @@ void WriteLine(const String& val) {
 	std::cout<<ms<<std::endl;
 }
 
+
+template<typename T>
+void Parse(const String& val, T& output) {
+	output = val;
+}
+template<typename T, typename Y>
+void ToString(const T& input, Y& output) {
+	String m = input;
+	std::string mem = m;
+	memcpy(output,mem.data(),mem.size()+1);
+}
+
 template<typename T>
 void Write(const T& val) {
 	std::cout<<val;
@@ -94,7 +106,7 @@ void WriteLine(const T& val) {
 	std::cout<<val<<std::endl;
 }
 template<typename T>
-void ReadLine(const T& output) {
+void ReadLine(T& output) {
 	std::cin.getline(output,sizeof(output));
 }
 String ReadLine() {

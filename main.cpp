@@ -2,6 +2,7 @@
 using namespace EC;
 
 int main(int argc, char** argv){
+	/*
 	WriteLine("Pick a number for a: ");
 	int a = ReadLine();
 	WriteLine("Pick a number for B: ");
@@ -9,6 +10,8 @@ int main(int argc, char** argv){
 	int sum = a+b;
 
 WriteLine(sum);
+*/
+
 
 return 0;
 }
