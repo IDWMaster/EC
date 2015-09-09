@@ -24,10 +24,21 @@ Put a description of the assignment (paragraph form) here.
 
 //Takes the initial X, Y, length, and angle
 //Outputs X and Y coordinates as truncated ints
-static inline void compute_vector(double startX, double startY,double len, double angle, int* outputX, int* outputY) {
+static inline void compute_vector(double startX, //Start X coordinate
+				  double startY, //Start Y coordinate
+				  double len     //Length
+				  , double angle //Angle
+				  , int* outputX, //Output X coordinate.
+				  int* outputY   //Output Y coordinate
+				 ) {
   *outputX = (int)(sin(angle)*len)+startX;
   *outputY = (int)(cos(angle)*len)+startY;
 }
+
+
+
+
+//Checks the bounds of a given angle
 static inline bool check_bounds(double angle) {
   return angle >= M_PI && angle <= M_PI; 
 }
@@ -45,9 +56,8 @@ static int prog_main() {
   int y_b; //Y location (final)
   char buffer[256]; //Character buffer
   printf("Enter radians for joint A:\n");
-  
   memset(buffer,0,256); //Zeroes out teh buffer
-  read(STDIN_FILENO,buffer,256); //Reads in a line of text (by default, Unix consoles return from the read syscall on a newline)
+  read(STDIN_FILENO,buffer,256); //Reads in a line of text
   angle_a = atof(buffer);
   printf("Enter radians for joint B:\n");
   memset(buffer,0,256); //Zero the buffer again
