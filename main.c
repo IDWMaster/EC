@@ -1,17 +1,3 @@
-#include "EC.h"
-#include <math.h>
-#include <unistd.h>
-
-
-using namespace EC;
-
-//+90 degrees is 1.57079633 rads.
-//+25 degrees is 0.436332313 rads (they're so rad)
-
-//Make sure each line of code fits on one line of paper.
-
-
-
 /*
 File name: main.c
 Author: Brian Bosak
@@ -25,6 +11,15 @@ and the angle of the second. The inputs are passed to stdin.
 The outputs given are the coordinate pairs (X,Y) of the base arm and
 the gripper.
 */
+
+
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h> //MAC needs this
+
 
 
 //Takes the initial X, Y, length, and angle
@@ -48,12 +43,12 @@ static inline bool check_bounds(double angle) {
   return angle >= M_PI && angle <= M_PI; 
 }
 
-static int prog_main() {
+int main(int argc, char** argv) {
   double cm_a; //Centimeters for A
   double cm_b; //Centimeters for B
   double angle_a; //angle for A
   double angle_b; //angle for B
-  cm_a = 100; //Length of A
+  cm_a = 80; //Length of A
   cm_b = 80; //Length of B
   int x_a; //X location (a)
   int y_a; //Y location (a)
@@ -69,7 +64,7 @@ static int prog_main() {
   read(STDIN_FILENO,buffer,256); //and read the data
   angle_b = atof(buffer);
   
-  compute_vector(0,0,cm_a,angle_a,&x_a,&y_a); //Compute A vector
+  compute_vector(0,100,cm_a,angle_a,&x_a,&y_a); //Compute A vector
   compute_vector(x_a,y_a,cm_b,angle_b+angle_a,&x_b,&y_b); //Compute B vector
   if(check_bounds(angle_a) && check_bounds(angle_b) && check_bounds(angle_a+angle_b)) {
     printf("Illegal arguments. Value must be between -pi and +pi rads\n");
@@ -82,60 +77,3 @@ static int prog_main() {
   
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int main(int argc, char** argv){
-  prog_main();
-  return 0;
-  
-  
-  
-  
-  
-  
-  
-  
-//Inputs: Angles of top joint, andle of bottom joint
-WriteLine("Let's assume that we have two joints, with angles on the bottoms of both.");
-WriteLine("Now; let's assume that we want to (for some odd reason) compute the X and Y coordinates of both of them.");
-WriteLine("Let's denote the bottommost one joint A, and the topmost joint B. Assume that they each have a length of 100 micrometers.");
-WriteLine("First; what's the angle of joint A (in radians, since we're so rad; also, who uses degrees anymore?)?");
-double angleA = ReadLine();
-WriteLine("Next; the angle of joint B");
-double angleB = ReadLine();
-WriteLine("OK. What is the length of joint A?");
-double lenA = ReadLine();
-WriteLine("Length of joint B?");
-double lenB = ReadLine();
-int XA = (int)(cos(angleA)*lenA);
-int YA = (int)(sin(angleA)*lenA);
-String m = "A: X:";
-m<<XA<<", Y:"<<YA;
-WriteLine(m);
-double XB = (int)(cos(angleB)*lenB)+XA;
-double YB = (int)(sin(angleB)*lenB)+YA;
-m = "B: X:";
-m<<XB<<", Y:"<<YB;
-WriteLine(m);
-return 0;
-}
-
-
-
-
