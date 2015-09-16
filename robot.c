@@ -40,7 +40,7 @@ static inline void compute_vector(double startX, //Start X coordinate
 
 //Checks the bounds of a given angle
 static inline bool check_bounds(double angle) {
-  return angle >= M_PI && angle <= M_PI; 
+  return angle >= -M_PI && angle <= M_PI; 
 }
 
 int main(int argc, char** argv) {
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
   
   compute_vector(0,100,cm_a,angle_a,&x_a,&y_a); //Compute A vector
   compute_vector(x_a,y_a,cm_b,angle_b+angle_a,&x_b,&y_b); //Compute B vector
-  if(check_bounds(angle_a) && check_bounds(angle_b) && check_bounds(angle_a+angle_b)) {
+  if(!(check_bounds(angle_a) && check_bounds(angle_b) && check_bounds(angle_a+angle_b))) {
     printf("Illegal arguments. Value must be between -pi and +pi rads\n");
     return -1;
   }
